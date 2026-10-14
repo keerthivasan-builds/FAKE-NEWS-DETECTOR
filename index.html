@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fake News Detector</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-orb orb-a"></div>
+  <div class="bg-orb orb-b"></div>
+
+  <header class="top-controls">
+    <button class="menu-btn" aria-label="Open menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <button id="themeToggle" class="theme-pill" aria-label="Toggle dark and light mode" title="Toggle theme">
+      <span id="themeText">LIGHT</span>
+      <span class="pill-knob"></span>
+    </button>
+  </header>
+
+  <main class="app-shell">
+    <section class="hero reveal">
+      <h1>Fake News Detector</h1>
+      <p>Check if news is real or fake using AI</p>
+    </section>
+
+    <section class="glass-card reveal delay-1">
+
+      <form id="detectorForm" class="detector-form">
+        <textarea
+          id="newsInput"
+          placeholder="Paste news text here..."
+          required
+        ></textarea>
+
+        <button id="checkBtn" class="check-btn" type="submit">
+          <span class="btn-text"><i class="fa-solid fa-magnifying-glass"></i> Check News Text</span>
+          <span class="spinner" aria-hidden="true"></span>
+        </button>
+      </form>
+
+      <div class="location-panel">
+        <div class="location-actions">
+          <button id="locateBtn" class="locate-btn" type="button">
+            <i class="fa-solid fa-location-crosshairs"></i>
+            <span>Use Live Location</span>
+          </button>
+          <a id="mapsLink" class="maps-link" href="#" target="_blank" rel="noopener noreferrer" hidden>
+            Open in Maps
+          </a>
+        </div>
+        <p id="locationStatus" class="location-status" aria-live="polite">Location not fetched yet.</p>
+        <p id="locationCoords" class="location-coords">Latitude: -- | Longitude: --</p>
+      </div>
+    </section>
+
+    <section id="resultCard" class="result-card reveal delay-2" aria-live="polite">
+      <div class="result-headline">
+        <div class="label-wrap">
+          <i id="resultIcon" class="fa-solid fa-circle-exclamation"></i>
+          <span id="labelValue" class="label-value">Fake</span>
+        </div>
+        <div class="confidence-wrap">
+          Confidence : <span id="confidenceValue">85%</span>
+        </div>
+      </div>
+
+      <div class="progress-track">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+
+      <span id="resultBadge" class="sr-only">Potentially Misleading</span>
+      <span id="progressValue" class="sr-only">85%</span>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
